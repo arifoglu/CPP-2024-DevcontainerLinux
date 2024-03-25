@@ -28,9 +28,5 @@ int main(){
         default :
             cout << "Enter a two integer pls \n";                  
     }
-
-    
-
-
     return 0;
 }
