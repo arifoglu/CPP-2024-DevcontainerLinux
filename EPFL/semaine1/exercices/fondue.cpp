@@ -1,7 +1,8 @@
 #include <iostream>
 
 int main(){
-    int BASE = 4;
+    // le tarif de fondue
+    const int BASE = 4;
     double fromage = 800.0;
     double eau = 2.0;
     double ail = 2.0;
