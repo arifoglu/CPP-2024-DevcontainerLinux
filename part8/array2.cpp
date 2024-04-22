@@ -6,7 +6,6 @@ void print_array(int array[],int size){
     }
 }
 
-
 int main(){
     const int SIZE = 10;
     int nums[SIZE];
