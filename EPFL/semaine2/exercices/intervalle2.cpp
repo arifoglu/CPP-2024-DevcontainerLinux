@@ -2,14 +2,19 @@
 using namespace std;
 
 int main(){
-    // I =  [-1,1[
+    //I = [2,3[ U ]0,1] U [-10,-2]
+    // (2 <= x  && x < 3)  || ( 0 < x  && x< = 1 ) || (-10 <= x && x <= - 2)  
     double x;
     cout << "Entrez un reel : " ;
     cin  >> x;
-    if(- 1.0 <= x  && x < 1.0){
+    if((2 <= x  && x < 3)  || ( 0 < x  && x <= 1 ) || (-10 <= x && x <= - 2))
+    {
         cout << "x appartient à I" <<endl;
-    }else {
+    }
+    else 
+    {
         cout << "x n'appartient pas à I" <<endl;
     }
+
     return 0;
 }
