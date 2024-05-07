@@ -54,3 +54,8 @@
 52. Angles
 53. Area equilateral
 54. Interest
+55. Interest Compound
+56. String manipulation
+57. Hexagon area
+58. Polygon area
+59. Distance two points 
