@@ -2,8 +2,9 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
-
+/* 
 void print_array(int array[],int count){
     for(int i = 0; i < count ;i++)
     {
@@ -11,10 +12,23 @@ void print_array(int array[],int count){
     }
     std::cout << "\n";
 }
+*/
+
+void print_vector(std::vector<int> vector){
+    for(int i = 0; i < vector.size() ;i++)
+    {
+        std::cout << vector[i] << "\t" ;     
+    }
+    std::cout << "\n";
+}
 
 void play_game(){
-    int guesses[250];
-    int guess_count = 0;
+    // Array type:
+    //int guesses[250];
+    //int guess_count = 0;
+    
+    // Vector type
+    std::vector<int> guesses;
 
     int random = rand() % 251 ;
     std::cout << random <<std::endl;
@@ -24,8 +38,12 @@ void play_game(){
         int guess ;
         std::cin >> guess;
 
-        guesses[guess_count++] = guess;    
+        // When we use array:  
+        //guesses[guess_count++] = guess;    
 
+        // When we use vector :
+        guesses.push_back(guess);
+        
         if(guess == random)
         {
             std::cout << "You win\n";
@@ -38,7 +56,11 @@ void play_game(){
         {
             std::cout << "Too high\n";
         }
-    print_array(guesses,guess_count);    
+     //Array type   
+    //print_array(guesses,guess_count);    
+    
+    // vector Type
+    print_vector(guesses);    
     }
            
 }
