@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <array>
+
 
 /* 
 void print_array(int array[],int count){
@@ -14,10 +16,19 @@ void print_array(int array[],int count){
 }
 */
 
+/*
 void print_vector(std::vector<int> vector){
     for(int i = 0; i < vector.size() ;i++)
     {
         std::cout << vector[i] << "\t" ;     
+    }
+    std::cout << "\n";
+}
+*/
+void print_array(std::array<int,251> array,int size){
+    for(int i = 0; i < size ;i++)
+    {
+        std::cout << array[i] << "\t" ;     
     }
     std::cout << "\n";
 }
@@ -28,8 +39,11 @@ void play_game(){
     //int guess_count = 0;
     
     // Vector type
-    std::vector<int> guesses;
-
+    //std::vector<int> guesses;
+    
+    // Templatized array
+    std::array<int,251> guesses;
+    int count = 0;
     int random = rand() % 251 ;
     std::cout << random <<std::endl;
     std::cout << "Guess a number : ";
@@ -42,8 +56,11 @@ void play_game(){
         //guesses[guess_count++] = guess;    
 
         // When we use vector :
-        guesses.push_back(guess);
+        //guesses.push_back(guess);
         
+        // when we use tmpl array
+        guesses[count++];
+
         if(guess == random)
         {
             std::cout << "You win\n";
@@ -60,7 +77,11 @@ void play_game(){
     //print_array(guesses,guess_count);    
     
     // vector Type
-    print_vector(guesses);    
+    //print_vector(guesses);    
+    
+    // Templ Array
+    print_array(guesses,count);
+    
     }
            
 }
