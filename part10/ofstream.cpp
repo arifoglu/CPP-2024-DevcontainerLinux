@@ -3,21 +3,22 @@
 #include <vector>
 
 int main(){
-    std::ofstream file ;
-    file.open("/workspaces/CPP-2024-DevContainerLinux/part10/hello.txt",std::ios::app);
 
-    std::vector<std::string> names;
-    names.push_back("Aalcon is a name1");
-    names.push_back("Balcon is a name2");
-    names.push_back("Calcon is a nam3");
-    names.push_back("Dalcon is a name4");
-    names.push_back("Ealcon is a nam5");
+    std::ifstream file("news.txt");
 
-    for(std::string n : names){
-        file << n <<std::endl;
+    if (!file) {
+        std::cerr << "Error: File could not be opened." << std::endl;
+        return 1;
     }
     
-    file.close();
+    std::vector<std::string> names;
 
+    std::string input;
+    while(file >> input){
+        names.push_back(input);
+    }
+    for(std::string& name : names){
+        std::cout << name <<std::endl;
+    }   
     return 0;
 }

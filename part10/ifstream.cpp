@@ -3,16 +3,24 @@
 #include <vector>
 
 int main(){
-    std::ifstream file("/workspaces/CPP-2024-DevContainerLinux/part10/hello.txt");
-    
-    std::vector<std::string> names;
-    std::string input;
-    while(file >> input){
-        names.push_back(input);
-    }
-    for(std::string name : names){
-        std::cout << name <<std::endl;
-     }
+    std::string filename;
+    std::cin >> filename;
 
-     return 0;
+    std::ofstream file(filename.c_str(),std::ios::app);
+    
+    if(file.is_open()){
+        std::cout << "file opened \n";
+    }
+    std::vector<std::string > names;
+
+    names.push_back("AW");
+    names.push_back("QW");
+    names.push_back("EW");
+
+    for(std::string name : names){
+        file << name <<std::endl;
+    } 
+    file.close();
+       
+    return 0;
 }
