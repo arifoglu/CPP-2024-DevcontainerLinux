@@ -18,8 +18,31 @@ int main()
   /*******************************************
    * Completez le programme a partir d'ici.
    *******************************************/
-
-
+  
+  for(int i = debut; i <= fin ;++i){
+  
+    int current = i;
+    int count = 0;
+  
+  do{
+     count++;
+     if(current % 3 == 0 )
+     {
+       current += 4;
+     }
+     else if(current % 3 != 0 && current % 4 == 0)
+     {
+       current /= 2;
+     }
+     else if(current % 3 != 0 && current % 4 != 0)
+     {
+       current -= 1;
+     }
+     }while(current != 0 );
+     
+     cout << i <<" -> "<< count <<endl;
+  }
+  
   /*******************************************
    * Ne rien modifier apres cette ligne.
    *******************************************/
