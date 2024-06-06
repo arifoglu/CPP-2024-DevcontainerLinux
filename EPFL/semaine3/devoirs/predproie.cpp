@@ -38,39 +38,82 @@ int main()
   // Première simulation
   cout <<  endl << "***** Le taux d'attaque vaut "<< taux_attaque * 100 << "%" <<  endl;
  
-  for(double i = 1;i <= duree;++i){
-    double croissance_lapins = 1.0 + taux_croissance_lapins - taux_attaque * renards_i;
-    double croissance_renard = 1.0 + taux_attaque * lapins_i * taux_croissance_renards - taux_mortalite;
-    lapins_i *= croissance_lapins;
-    renards_i *= croissance_renard;
-    cout << "Après " << i << " mois, il y a " << lapins_i <<" lapins et " << renards_i << " renards" << endl;
-  }
+  //for(double i = 1;i <= duree;++i){
+  //  double croissance_lapins = 1.0 + taux_croissance_lapins - taux_attaque * renards_i;
+  //  double croissance_renard = 1.0 + taux_attaque * lapins_i * taux_croissance_renards - taux_mortalite;
+  //  lapins_i *= croissance_lapins;
+  //  renards_i *= croissance_renard;
+  //  cout << "Après " << i << " mois, il y a " << lapins_i <<" lapins et " << renards_i << " renards" << endl;
+  //}
 
   // ===== PARTIE 3 =====
   // Variation du taux d'attaque
   cout << endl;
-
-  for(double i = 1;i <= duree;++i){
-    double croissance_lapins = 1.0 + taux_croissance_lapins - taux_attaque * renards_i;
-    double croissance_renard = 1.0 + taux_attaque * lapins_i * taux_croissance_renards - taux_mortalite;
-    lapins_i *= croissance_lapins;
-    renards_i *= croissance_renard;
-  }
-  cout << "Après " << duree << " mois, il y a " << lapins_i <<" lapins et " << renards_i << " renards" << endl;
+  double taux_attaque_depart,taux_attaque_fin ;
   
+  do
+  {
+    cout << "taux d'attaque au départ en % (entre 0.5 et 6) ? ";
+    cin >> taux_attaque_depart;
+  } while (taux_attaque_depart < 0.5 || taux_attaque_depart > 6);
+  do
+  {
+   cout << "taux d'attaque à la fin  en % (entre ";
+   cout << taux_attaque_depart << " et 6) ? ";   
+    cin >> taux_attaque_fin;
+  } while (taux_attaque_fin < taux_attaque_depart || taux_attaque_fin > 6);
+    
 
-  cout << "taux d'attaque au départ en % (entre 0.5 et 6) ? ";
+  for(double i = taux_attaque_depart;i <= taux_attaque_fin;++i){
+    
+     cout <<  endl << "***** Le taux d'attaque vaut "<< i << "%" <<  endl;
 
-  cout << "taux d'attaque à la fin  en % (entre ";
-  cout << " et 6) ? ";
+     bool renards_ext = false;
+     bool renards_rec = false;
+     bool lapins_ext = false;
+     bool lapins_rec = false;
+   
+   double renards = renards_i;
+   double lapins = lapins_i;
 
-  cout << "Les renards ont été en voie d'extinction" << endl;
-  cout << "mais la population est remontée ! Ouf !" << endl;
-  cout << "et les renards ont disparu :-(" << endl;
-  cout << "Les lapins ont été en voie d'extinction" << endl;
-  cout << "mais la population est remontée ! Ouf !" << endl;
-  cout << "et les lapins ont disparu :-(" << endl;
-  cout << "Les lapins et les renards ont des populations stables." << endl;
+     for(int mois = 1;mois <= duree;++mois){
+       double croissance_lapins = 1.0 + taux_croissance_lapins - (i / 100) * renards;
+       double croissance_renard = 1.0 + (i / 100) * lapins * taux_croissance_renards - taux_mortalite;
+       lapins *= croissance_lapins;
+       renards *= croissance_renard;
+           
+      if (renards < 5 && !renards_ext) {
+          cout << "Les renards ont été en voie d'extinction." << endl;
+          renards_ext = true;
+      }
+      if (renards_ext && renards >= 5 && !renards_rec) {
+          cout << "mais la population des renards est remontée ! Ouf !" << endl;
+          renards_rec = true;
+      }
+      if (lapins< 5 && !lapins_ext) {
+          cout << "Les lapins ont été en voie d'extinction." << endl;
+          lapins_ext = true;
+      }
+      if (lapins_ext && lapins >= 5 && !lapins_rec) {
+          cout << "mais la population des lapins est remontée ! Ouf !" << endl;
+          lapins_rec = true;
+      }
+ 
+      cout << "Après " << duree << " mois, il y a " << lapins <<" lapins et " << renards << " renards" << endl;
+
+      if (renards < 5) {
+          cout << "et les renards ont disparu :-(" << endl;
+      }
+      if (lapins < 5) {
+          cout << "et les lapins ont disparu :-(" << endl;
+      }
+      if (renards >= 5 && lapins >= 5) {
+          cout << "Les lapins et les renards ont des populations stables." << endl;
+      }
+    } 
+  }   
+ 
+  
 
   /*******************************************
    * Ne rien modifier après cette ligne.
