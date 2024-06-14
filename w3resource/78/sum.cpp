@@ -7,9 +7,10 @@ using namespace std;
 int main() {
     string str;
     int sum = 0, num;
-
+    std::cout << "Type a phrase with numbers " <<std::endl;
     // Read input line by line
     while (getline(cin, str)) {
+        if(str == "q") break;
         // Convert all non-digit characters to spaces
         for (int i = 0; i < (int)str.size(); i++) {
             if (!isdigit(str[i])) {
@@ -24,6 +25,7 @@ int main() {
         while (abc >> num) {
             sum += num;
         }
+        
     }
 
     cout << "Sum of all numbers: " << sum << endl;
