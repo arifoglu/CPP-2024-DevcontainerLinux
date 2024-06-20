@@ -59,3 +59,15 @@
 57. Hexagon area
 58. Polygon area
 59. Distance two points 
+61. swap numbers position
+62. Twin prime numbers 
+63. Order list from highest to smallest 
+64. Count the digits numbers
+65. Right triangle calculate 
+66. Summary
+68. Sort numbers
+69. Factorial 
+70. Uppercase 
+74. Difference coordinate
+77. Detect orthogonal
+78. Detect numbers and sum of them 
