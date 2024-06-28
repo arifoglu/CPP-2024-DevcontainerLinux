@@ -9,10 +9,8 @@ string capitalize_first_letter(string text){
           text[i] = toupper(text[i]);
         }
     }
-
     return text;
 }
-
 int main(){
     string phrase;
     cout << "Enter a phrase : ";
